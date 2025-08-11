@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://priyang1310:Priyang1310@cluster0.qtqbc.mongodb.net/coursedb')
+mongoose.connect('mongodb://localhost:27017/coursedb')
     .then(() => console.log('Course DB Connected'));
 
 const CourseSchema = new mongoose.Schema({

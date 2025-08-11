@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios'); // to call Course Service
 
-mongoose.connect('mongodb+srv://priyang1310:Priyang1310@cluster0.qtqbc.mongodb.net/studentdb')
+mongoose.connect('mongodb://localhost:27017/studentdb')
     .then(() => console.log('Student DB Connected'));
 
 const StudentSchema = new mongoose.Schema({
