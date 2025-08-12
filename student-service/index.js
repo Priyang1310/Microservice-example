@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios'); // to call Course Service
 
-mongoose.connect('mongodb://localhost:27017/studentdb')
+mongoose.connect('mongodb+srv://priyang1310:Priyang1310@cluster0.qtqbc.mongodb.net/studentdb')
     .then(() => console.log('Student DB Connected'));
 
 const StudentSchema = new mongoose.Schema({
@@ -20,7 +20,8 @@ app.post('/', async (req, res) => {
     try {
         const courseTitle = req.body.course;
         // Call Course Service
-        const courseCheck = await axios.get(`http://localhost:5002/${courseTitle}`);
+        const courseCheck = await axios.get(`http://course-service:5002/${courseTitle}`);
+
         
         if (!courseCheck.data) {
             return res.status(400).json({ error: 'Course does not exist' });
@@ -41,6 +42,6 @@ app.get('/', async (req, res) => {
     res.json(students);
 });
 
-app.listen(5001, () => {
+app.listen(5001, '0.0.0.0',() => {
     console.log('Student Service running on port 5001');
 });
